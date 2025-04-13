@@ -39,7 +39,8 @@ public class CasinoUI {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        notificationController = new NotificationController();
+        notificationController = NotificationController.getInstance();
+
 
         // Login test credentials
         User testUser = new User("1", "testUser", "password123", "test@example.com", 100.0);

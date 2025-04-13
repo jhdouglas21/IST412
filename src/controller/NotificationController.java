@@ -3,6 +3,17 @@ package controller;
 import java.util.*;
 
 public class NotificationController {
+    private static NotificationController instance;
+
+    private NotificationController() {}
+
+    public static synchronized NotificationController getInstance() {
+        if (instance == null) {
+            instance = new NotificationController();
+        }
+        return instance;
+    }
+
     private Set<String> subscribers = new HashSet<>();
     private Map<String, Set<String>> userPreferences = new HashMap<>();
 
