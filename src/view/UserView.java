@@ -43,7 +43,34 @@ public class UserView extends JPanel {
     }
 
     public UserView(User currentUser, NotificationController notificationController) {
+        setLayout(new BorderLayout());
+        setBackground(new Color(30, 30, 30));
+
+        JLabel title = new JLabel("User Profile", SwingConstants.CENTER);
+        title.setFont(new Font("Serif", Font.BOLD, 24));
+        title.setForeground(Color.WHITE);
+
+        JPanel userPanel = new JPanel();
+        userPanel.setOpaque(false);
+
+        JLabel userLabel = new JLabel("Username: " + currentUser.getUsername());
+        userLabel.setForeground(Color.WHITE);
+
+        JLabel emailLabel = new JLabel("Email: " + currentUser.getEmail());
+        emailLabel.setForeground(Color.WHITE);
+
+        JLabel balanceLabel = new JLabel("Balance: $" + currentUser.getBalance());
+        balanceLabel.setForeground(Color.WHITE);
+
+        userPanel.add(userLabel);
+        userPanel.add(emailLabel);
+        userPanel.add(balanceLabel);
+
+        add(title, BorderLayout.NORTH);
+        add(userPanel, BorderLayout.CENTER);
+        add(createBackButton(), BorderLayout.SOUTH);
     }
+
 
     private JButton createBackButton() {
         JButton backBtn = new JButton("Back to Main");
@@ -51,6 +78,8 @@ public class UserView extends JPanel {
         backBtn.setBackground(new Color(50, 50, 50));
         backBtn.setForeground(Color.WHITE);
         backBtn.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+        backBtn.addActionListener(e -> CasinoUI.showView("MainView"));
         return backBtn;
     }
+
 }

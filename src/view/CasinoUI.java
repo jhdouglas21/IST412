@@ -1,16 +1,16 @@
 package view;
 
-import controller.NotificationController;
-import controller.SpendingLimitController;
-import controller.TransactionController;
-import controller.UserAuthController;
+import controller.*;
 import model.SpendingLimit;
 import model.Transaction;
 import model.User;
+import model.UserManager;
 import view.UserView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CasinoUI {
     private static JFrame frame;
@@ -19,6 +19,10 @@ public class CasinoUI {
     private static User currentUser;
     private static NotificationController notificationController;
     private static SpendingLimit spendingLimitModel;
+    private static UserManager userManager;
+    private static Map<String, JPanel> views = new HashMap<>();
+
+
 
     static UserView userView = new UserView();
 
@@ -35,7 +39,6 @@ public class CasinoUI {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-
         notificationController = new NotificationController();
 
         // Login test credentials
@@ -48,7 +51,7 @@ public class CasinoUI {
             String username = loginView.getUsername();
             String password = loginView.getPassword();
             if (authController.authenticate(username, password)) {
-                currentUser = testUser; // Save the logged-in user
+                currentUser = testUser;
                 setupPostLoginViews();
                 showView("MainView");
             } else {
@@ -56,7 +59,18 @@ public class CasinoUI {
             }
         });
 
-        // Login view
+        // Initialize userManager if not already done
+        if (userManager == null) {
+            userManager = new UserManager(); // Assuming you have a default constructor
+        }
+
+        // New Account creation view
+        NewUserController newUserController = new NewUserController(userManager);
+        NewUserView newUserView = new NewUserView(newUserController);
+        views.put("NewUserView", newUserView);
+        mainPanel.add(newUserView, "NewUserView");
+
+        // Add login view to card layout
         mainPanel.add(loginView, "LoginView");
 
         frame.add(mainPanel);
@@ -65,33 +79,33 @@ public class CasinoUI {
         showView("LoginView");
     }
 
-    private static void setupPostLoginViews() {
-        // Spending Limit view
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
+    public static void setupPostLoginViews() {
+        // Clear or refresh views if needed
         spendingLimitModel = new SpendingLimit(notificationController);
         SpendingLimitView spendingLimitView = new SpendingLimitView();
         new SpendingLimitController(spendingLimitModel, spendingLimitView, currentUser.getUserId());
 
-        // Transaction Controller
         TransactionController transactionController = new TransactionController(spendingLimitModel);
-
-        // test deposit
         Transaction deposit = new Transaction("001", 50.0, "deposit");
         transactionController.processTransaction(currentUser, deposit);
 
-        // Views in mainview
         mainPanel.add(new MainView(), "MainView");
         mainPanel.add(new GameView(), "GameView");
         mainPanel.add(spendingLimitView, "SpendingLimitView");
-
-
         mainPanel.add(new UserView(currentUser, notificationController), "UserView");
 
-
-        // Observation pattern notification subscription
         notificationController.subscribe(currentUser.getUserId());
     }
+
 
     public static void showView(String viewName) {
         cardLayout.show(mainPanel, viewName);
     }
+
+
 }

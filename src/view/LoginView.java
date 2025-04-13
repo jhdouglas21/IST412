@@ -7,8 +7,8 @@ public class LoginView extends JPanel {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton loginButton;
+    private JButton createAccountButton;
 
-    //starting/log in credentials page
     public LoginView() {
         setLayout(new GridBagLayout());
         setBackground(new Color(40, 40, 40));
@@ -28,6 +28,11 @@ public class LoginView extends JPanel {
         loginButton = new JButton("Login");
         loginButton.setBackground(new Color(70, 130, 180));
         loginButton.setForeground(Color.BLACK);
+
+        createAccountButton = new JButton("Create Account"); // fixed here
+        createAccountButton.setBackground(new Color(100, 200, 100));
+        createAccountButton.setForeground(Color.BLACK);
+        createAccountButton.addActionListener(e -> CasinoUI.showView("NewUserView"));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -52,6 +57,9 @@ public class LoginView extends JPanel {
         gbc.gridy++;
         gbc.gridwidth = 2;
         add(loginButton, gbc);
+
+        gbc.gridy++; // Add the "Create Account" button below the login button
+        add(createAccountButton, gbc);
     }
 
     public String getUsername() {
@@ -66,4 +74,3 @@ public class LoginView extends JPanel {
         return loginButton;
     }
 }
-
