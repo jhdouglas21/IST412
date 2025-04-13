@@ -23,11 +23,14 @@ public class SpendingLimit {
         return userLimits.getOrDefault(userId, 0.0);
     }
 
-    // ensures amount is less than spending limit
-    public boolean canSpend(String userId, double amount) {
-        double spent = userSpending.getOrDefault(userId, 0.0);
-        double limit = userLimits.getOrDefault(userId, Double.MAX_VALUE);
-        return (spent + amount) <= limit;
+    public double getUserSpending(String userId) {
+        return userSpending.getOrDefault(userId, 0.0);
+    }
+
+    public boolean canSpend(User user, double amount, LimitStrategy strategy) {
+        LimitEnforcer enforcer = new LimitEnforcer();
+        enforcer.setStrategy(strategy);
+        return !enforcer.enforce(user, amount);
     }
 
     public void addTransaction(String userId, double amount) {
@@ -48,3 +51,4 @@ public class SpendingLimit {
         userSpending.put(userId, 0.0);
     }
 }
+

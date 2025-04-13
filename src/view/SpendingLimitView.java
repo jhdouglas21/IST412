@@ -1,5 +1,7 @@
 package view;
 
+import model.SpendingLimit;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,17 +10,12 @@ public class SpendingLimitView extends JPanel {
     private JPanel stepPanel;
     private int currentStep = 0;
 
-    // Navigation buttons
     private JButton backButton, nextButton, finishButton;
-
-    // Question 1
     private JTextField limitAmountField;
-
-    // Question 2
     private JComboBox<String> timeFrameCombo;
-
-    // Question 3
     private JCheckBox notifyCheckbox, blockCheckbox;
+
+    private Runnable onFinishAction;
 
     public SpendingLimitView() {
         setLayout(new BorderLayout());
@@ -126,8 +123,11 @@ public class SpendingLimitView extends JPanel {
 
         backButton.addActionListener(e -> showStep(currentStep - 1));
         nextButton.addActionListener(e -> showStep(currentStep + 1));
-        finishButton.addActionListener(e -> showSummary());
+        finishButton.addActionListener(e -> {
+            if (onFinishAction != null) onFinishAction.run();
+        });
         cancelButton.addActionListener(e -> CasinoUI.showView("MainView"));
+        finishButton.addActionListener(e -> CasinoUI.showView("MainView"));
 
         panel.add(backButton);
         panel.add(nextButton);
@@ -152,25 +152,17 @@ public class SpendingLimitView extends JPanel {
         finishButton.setVisible(currentStep == 2);
     }
 
-    // Notification of changes/choices
-    private void showSummary() {
-        try {
-            double limit = Double.parseDouble(limitAmountField.getText());
-            String timeFrame = (String) timeFrameCombo.getSelectedItem();
-            boolean notify = notifyCheckbox.isSelected();
-            boolean block = blockCheckbox.isSelected();
+    // MVP methods
+    public void setOnFinishAction(Runnable action) {
+        this.onFinishAction = action;
+    }
 
-            String summary = "Limit: $" + limit +
-                    "\nTime Frame: " + timeFrame +
-                    "\nNotify: " + (notify ? "Yes" : "No") +
-                    "\nBlock: " + (block ? "Yes" : "No");
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
-            JOptionPane.showMessageDialog(this, summary, "Spending Limit Set", JOptionPane.INFORMATION_MESSAGE);
-            CasinoUI.showView("MainView");
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid numeric limit.", "Input Error", JOptionPane.ERROR_MESSAGE);
-        }
+    public void showSuccess(String message) {
+        JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public double getLimitAmount() throws NumberFormatException {
@@ -181,15 +173,15 @@ public class SpendingLimitView extends JPanel {
         return (String) timeFrameCombo.getSelectedItem();
     }
 
-    public JButton getFinishButton() {
-        return finishButton;
-    }
-
     public boolean shouldNotify() {
         return notifyCheckbox.isSelected();
     }
 
     public boolean shouldBlock() {
         return blockCheckbox.isSelected();
+    }
+
+    public JButton getFinishButton() {
+        return finishButton;
     }
 }

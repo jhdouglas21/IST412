@@ -9,7 +9,7 @@ This weeks assignments: implementing design patterns and implementing another us
 
 ## Team Member/ID and Contribution for M03-A04 Design Patterns
 
-#1 Nick Falletta -
+#1 Nick Falletta - Implemented Strategy Pattern and MVP design pattern. MVP is used in SpendingLimitView and SpendingLimitPresenter. Strategy Pattern used in DailyLimitStrategy, LimitEnforcer, LimitStrategy, SpendingLimit, TransactionController, and PerTransactionLimitStrategy
 
 #2 John Douglas -
 
