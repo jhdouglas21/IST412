@@ -7,6 +7,7 @@ import controller.UserAuthController;
 import model.SpendingLimit;
 import model.Transaction;
 import model.User;
+import view.UserView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +19,8 @@ public class CasinoUI {
     private static User currentUser;
     private static NotificationController notificationController;
     private static SpendingLimit spendingLimitModel;
+
+    static UserView userView = new UserView();
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(CasinoUI::createAndShowGUI);
@@ -36,9 +39,9 @@ public class CasinoUI {
         notificationController = new NotificationController();
 
         // Login test credentials
-        User testUser = new User("1", "testUser", "password123", "test@example.com", 100.0, "Placeholder", "Placeholder");
+        User testUser = new User("1", "testUser", "password123", "test@example.com", 100.0);
         LoginView loginView = new LoginView();
-        UserAuthController authController = new UserAuthController(testUser, LoginView);
+        UserAuthController authController = new UserAuthController(testUser, userView);
 
         // Login button behavior/authentication
         loginView.getLoginButton().addActionListener(e -> {
