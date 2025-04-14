@@ -15,7 +15,7 @@ public class Main {
         controller.setUserPreference("player1", "betting", true);
         controller.setUserPreference("player1", "banking", true);
 
-        NotificationController.CasinoInvoker invoker = controller.new CasinoInvoker();
+        NotificationController.CasinoInvoker invoker = new NotificationController.CasinoInvoker();
         invoker.addCommand(controller.new PlaceBetCommand("player1", 50));
         invoker.addCommand(controller.new WithdrawCommand("player1", 25));
 
