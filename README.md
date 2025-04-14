@@ -11,7 +11,7 @@ This weeks assignments: implementing design patterns and implementing another us
 
 #1 Nick Falletta - Implemented Strategy Pattern and MVP design pattern. MVP is used in SpendingLimitView and SpendingLimitPresenter. Strategy Pattern used in DailyLimitStrategy, LimitEnforcer, LimitStrategy, SpendingLimit, TransactionController, and PerTransactionLimitStrategy
 
-#2 John Douglas - Implemented Password Strength and Singleton design patterns. The password strength is implemented for the new user method that is accessed when creating a new account. The singleton design pattern is implemented for the notification controller which is called in the CasinoUI class. Created the UserManagement, NewUserController, and NewUserView.
+#2 John Douglas - Implemented Password Strength and Singleton design patterns. The password strength is implemented for the new user method that is accessed when creating a new account. The singleton design pattern is implemented for the notification controller which is called in the CasinoUI class. Created account creation functionality for new users. Created the UserManagement, NewUserController, and NewUserView.
 
 #3 Taylor Smith - Implemented Observer and Wizard design patterns. Observer implemented in NotificationController, UserView, CasinoUI. Wizard implemented in SpendingLimit, SpendingLimitController, SpendingLimitView, CasinoUI. Changes seen in UI, in Set Spending Limit Panel on the Mainview and in User Settings, opting in and out of notfications
 
