@@ -15,7 +15,7 @@ This weeks assignments: implementing design patterns and implementing another us
 
 #3 Taylor Smith - Implemented Observer and Wizard design patterns. Observer implemented in NotificationController, UserView, CasinoUI. Wizard implemented in SpendingLimit, SpendingLimitController, SpendingLimitView, CasinoUI. Changes seen in UI, in Set Spending Limit Panel on the Mainview and in User Settings, opting in and out of notfications
 
-#4 Nicholas Boyle -
+#4 Nicholas Boyle - Implemented the Command and Observer design patterns. Both patterns were added directly into the existing NotificationController class to maintain file simplicity. The Command pattern encapsulates user actions like placing a bet and withdrawing funds through PlaceBetCommand and WithdrawCommand, executed using a CasinoInvoker. The Observer pattern allows real-time notification updates to observers when user preferences or event changes occur. Changes are visible in both the business logic and the notification behavior during simulated command execution.
 
 #5 Sam Bender - Implemented factory design patterns for both design patterns and within the object orientation side of implementation as well. Common game interfaces that are shared among a few different example games to show MVP implementation of factory usage. Models utilize the CasinoGame interface and individual factory classes to help reporoduce games without changing much code or hurting any previously existing code.
 
