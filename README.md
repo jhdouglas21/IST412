@@ -30,6 +30,6 @@ This weeks assignments: implementing design patterns and implementing another us
 
 #3 Taylor Smith - Pecentage of effort: 20%. Created LoginView screen and added userauthentication functionality through changes in User, UserAuthController, and CasinoUI.
 
-#4 Nicholas Boyle -
+#4 Nicholas Boyle - Pecentage of effort: 20%. Added new notification capabilities and updated UI.
 
 #5 Sam Bender - Working on improving the view classes and stylizing the GUI so it is better suited to users and easier to understand the limit setting process. Additionally checking on persistency to show up the setting limit info on users profile when checking account information (previously just user/pass and account bal but did not show spending limits)
