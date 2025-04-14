@@ -17,7 +17,7 @@ This weeks assignments: implementing design patterns and implementing another us
 
 #4 Nicholas Boyle -
 
-#5 Sam Bender -
+#5 Sam Bender - Implemented factory design patterns for both design patterns and within the object orientation side of implementation as well. Common game interfaces that are shared among a few different example games to show MVP implementation of factory usage. Models utilize the CasinoGame interface and individual factory classes to help reporoduce games without changing much code or hurting any previously existing code.
 
 ## Team Member/ID and Contribution for M03-A05 'Implementing Manage User Profile Data'
 
