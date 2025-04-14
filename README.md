@@ -1,7 +1,10 @@
 # CasinoAPI
+
 Log in credentials:
 Username: testUser
 Password: password123
+
+
 
 Different API classes needed to be implemented in order to complete our online casino complex Java system project.
 
@@ -9,7 +12,7 @@ This weeks assignments: implementing design patterns and implementing another us
 
 ## Team Member/ID and Contribution for M03-A04 Design Patterns
 
-#1 Nick Falletta - Implemented Strategy Pattern and MVP design pattern. MVP is used in SpendingLimitView and SpendingLimitPresenter. Strategy Pattern used in DailyLimitStrategy, LimitEnforcer, LimitStrategy, SpendingLimit, TransactionController, and PerTransactionLimitStrategy
+#1 Nick Falletta - Implemented Strategy Pattern and MVP design pattern. The MVP pattern is used in SpendingLimitView and SpendingLimitPresenter to separate UI and logic. The Strategy Pattern is used in LimitStrategy, DailyLimitStrategy, PerTransactionLimitStrategy, LimitEnforcer, SpendingLimit, and TransactionController to flexibly enforce spending rules.
 
 #2 John Douglas - Implemented Password Strength and Singleton design patterns. The password strength is implemented for the new user method that is accessed when creating a new account. The singleton design pattern is implemented for the notification controller which is called in the CasinoUI class. Created account creation functionality for new users. Created the UserManagement, NewUserController, and NewUserView.
 
@@ -21,11 +24,11 @@ This weeks assignments: implementing design patterns and implementing another us
 
 ## Team Member/ID and Contribution for M03-A05 'Implementing Manage User Profile Data'
 
-#1 Nick Falletta -
+#1 Nick Falletta - Pecentage of effort: 20%. Made all spending limit logic (for the model) extremely flexible to handle any quick changes/updates we need to make to the API.
 
-#2 John Douglas - Implemented user account creation and authentication. Passwords will be graded on strength when creating an account. Implemented spendingLimit classes to dictate how much a user can spend.
+#2 John Douglas - Pecentage of effort: 20%. Implemented user account creation and authentication. Passwords will be graded on strength when creating an account. Implemented spendingLimit classes to dictate how much a user can spend.
 
-#3 Taylor Smith - Pecentage of effort: . Created LoginView screen and added userauthentication functionality through changes in User, UserAuthController, and CasinoUI.
+#3 Taylor Smith - Pecentage of effort: 20%. Created LoginView screen and added userauthentication functionality through changes in User, UserAuthController, and CasinoUI.
 
 #4 Nicholas Boyle -
 
