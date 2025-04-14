@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b374290b-f17b-4943-96cc-8c067f6551f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/NewUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/PasswordStrengthChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/UserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/NewUserView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412/view/UserView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412/view/UserView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/CasinoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CasinoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/UserView.java" afterDir="false" />
-    </list>
+    <list default="true" id="b374290b-f17b-4943-96cc-8c067f6551f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,17 +31,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CasinoUI.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CasinoUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.CasinoUI">
     <configuration name="CasinoUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.CasinoUI" />

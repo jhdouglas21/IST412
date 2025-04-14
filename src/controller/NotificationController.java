@@ -115,7 +115,7 @@ public class NotificationController {
         }
     }
 
-    public class CasinoInvoker {
+    public static class CasinoInvoker {
         private Queue<CasinoCommand> commandQueue = new LinkedList<>();
 
         public void addCommand(CasinoCommand command) {
