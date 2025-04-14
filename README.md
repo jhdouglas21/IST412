@@ -32,4 +32,4 @@ This weeks assignments: implementing design patterns and implementing another us
 
 #4 Nicholas Boyle -
 
-#5 Sam Bender -
+#5 Sam Bender - Working on improving the view classes and stylizing the GUI so it is better suited to users and easier to understand the limit setting process. Additionally checking on persistency to show up the setting limit info on users profile when checking account information (previously just user/pass and account bal but did not show spending limits)
