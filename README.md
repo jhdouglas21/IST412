@@ -23,7 +23,7 @@ This weeks assignments: implementing design patterns and implementing another us
 
 #1 Nick Falletta -
 
-#2 John Douglas -
+#2 John Douglas - Implemented user account creation and authentication. Passwords will be graded on strength when creating an account. Implemented spendingLimit classes to dictate how much a user can spend.
 
 #3 Taylor Smith - Pecentage of effort: . Created LoginView screen and added userauthentication functionality through changes in User, UserAuthController, and CasinoUI.
 
