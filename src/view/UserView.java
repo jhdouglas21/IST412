@@ -7,6 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class UserView extends JPanel {
+
+    private JButton backButton, nextButton, finishButton;
+    private JTextField limitAmountField;
+    private JComboBox<String> timeFrameCombo;
+    private JCheckBox notifyCheckbox, blockCheckbox;
     public UserView() {
         setLayout(new BorderLayout());
         setBackground(new Color(30, 30, 30));
@@ -45,27 +50,79 @@ public class UserView extends JPanel {
     public UserView(User currentUser, NotificationController notificationController) {
         setLayout(new BorderLayout());
         setBackground(new Color(30, 30, 30));
-
+    
         JLabel title = new JLabel("User Profile", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.BOLD, 24));
         title.setForeground(Color.WHITE);
-
+    
         JPanel userPanel = new JPanel();
+        userPanel.setLayout(new BoxLayout(userPanel, BoxLayout.Y_AXIS));
         userPanel.setOpaque(false);
-
+    
         JLabel userLabel = new JLabel("Username: " + currentUser.getUsername());
         userLabel.setForeground(Color.WHITE);
-
+    
         JLabel emailLabel = new JLabel("Email: " + currentUser.getEmail());
         emailLabel.setForeground(Color.WHITE);
-
+    
         JLabel balanceLabel = new JLabel("Balance: $" + currentUser.getBalance());
         balanceLabel.setForeground(Color.WHITE);
-
+    
         userPanel.add(userLabel);
         userPanel.add(emailLabel);
         userPanel.add(balanceLabel);
-
+        userPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+    
+        // Notification section
+        JLabel notifLabel = new JLabel("Subscribe to Notifications");
+        notifLabel.setForeground(Color.WHITE);
+        notifLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    
+        notifyCheckbox = new JCheckBox("Opt in to receive all notifications");
+        notifyCheckbox.setForeground(Color.WHITE);
+        notifyCheckbox.setOpaque(false);
+        notifyCheckbox.setAlignmentX(Component.CENTER_ALIGNMENT);
+    
+        JLabel notifTypesLabel = new JLabel("Choose the types of notifications you would like to receive:");
+        notifTypesLabel.setForeground(Color.WHITE);
+        notifTypesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    
+        JCheckBox spendingLimitCheckbox = new JCheckBox("Spending Limits");
+        JCheckBox transactionsCheckbox = new JCheckBox("Transactions");
+        JCheckBox gameAlertsCheckbox = new JCheckBox("Game Alerts");
+    
+        for (JCheckBox cb : new JCheckBox[]{spendingLimitCheckbox, transactionsCheckbox, gameAlertsCheckbox}) {
+            cb.setForeground(Color.WHITE);
+            cb.setOpaque(false);
+            cb.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+    
+        JButton savePrefsBtn = new JButton("Save Preferences");
+        savePrefsBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        savePrefsBtn.setBackground(new Color(70, 130, 180));
+        savePrefsBtn.setForeground(Color.BLACK);
+    
+        savePrefsBtn.addActionListener(e -> {
+            boolean optIn = notifyCheckbox.isSelected();
+            boolean wantsSpending = spendingLimitCheckbox.isSelected();
+            boolean wantsTransactions = transactionsCheckbox.isSelected();
+            boolean wantsGameAlerts = gameAlertsCheckbox.isSelected();
+    
+            notificationController.savePreferences(currentUser.getUsername(), optIn, wantsSpending, wantsTransactions, wantsGameAlerts);
+    
+            JOptionPane.showMessageDialog(this, "Preferences saved successfully!", "Notification Settings", JOptionPane.INFORMATION_MESSAGE);
+        });
+    
+        userPanel.add(notifLabel);
+        userPanel.add(notifyCheckbox);
+        userPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        userPanel.add(notifTypesLabel);
+        userPanel.add(spendingLimitCheckbox);
+        userPanel.add(transactionsCheckbox);
+        userPanel.add(gameAlertsCheckbox);
+        userPanel.add(Box.createRigidArea(new Dimension(0, 15)));
+        userPanel.add(savePrefsBtn);
+    
         add(title, BorderLayout.NORTH);
         add(userPanel, BorderLayout.CENTER);
         add(createBackButton(), BorderLayout.SOUTH);

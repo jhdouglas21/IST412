@@ -115,6 +115,7 @@ public class NotificationController {
         }
     }
 
+
     public static class CasinoInvoker {
         private Queue<CasinoCommand> commandQueue = new LinkedList<>();
 
@@ -128,5 +129,14 @@ public class NotificationController {
             }
         }
     }
+
+    public void savePreferences(String username, boolean optIn, boolean spending, boolean transactions, boolean gameAlerts) {
+        System.out.println("Saving preferences for: " + username);
+        System.out.println("Opt in: " + optIn);
+        System.out.println("Spending alerts: " + spending);
+        System.out.println("Transaction alerts: " + transactions);
+        System.out.println("Game alerts: " + gameAlerts);
+    }
+    
 }
 
