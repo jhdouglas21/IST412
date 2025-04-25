@@ -27,6 +27,7 @@ public class GameView extends JPanel {
         add(title, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
         add(gameOutput, BorderLayout.SOUTH);
+        add(createBackButton(), BorderLayout.SOUTH);
     }
 
     private JPanel createGameButtons() {

@@ -21,18 +21,30 @@ public class UserView extends JPanel {
         title.setForeground(Color.WHITE);
 
         JPanel userPanel = new JPanel();
+        userPanel.setLayout(new BoxLayout(userPanel, BoxLayout.Y_AXIS));
         userPanel.setOpaque(false);
 
         JLabel firstNameLabel = new JLabel("FirstName: ");
         firstNameLabel.setForeground(Color.WHITE);
+        firstNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JTextField firstNameTF = new JTextField(15);
+        firstNameTF.setMaximumSize(firstNameTF.getPreferredSize());
+        firstNameTF.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JButton saveBtn1 = new JButton("Save");
         saveBtn1.setBackground(new Color(50, 50, 50));
         saveBtn1.setForeground(Color.WHITE);
 
         JLabel lastNameLabel = new JLabel("LastName: ");
         lastNameLabel.setForeground(Color.WHITE);
+        lastNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JTextField lastNameTF = new JTextField(15);
+        lastNameTF.setMaximumSize(lastNameTF.getPreferredSize());
+        lastNameTF.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+    
 
         userPanel.add(firstNameLabel);
         userPanel.add(firstNameTF);
@@ -61,12 +73,15 @@ public class UserView extends JPanel {
     
         JLabel userLabel = new JLabel("Username: " + currentUser.getUsername());
         userLabel.setForeground(Color.WHITE);
+        userLabel.setAlignmentX(LEFT_ALIGNMENT);
     
         JLabel emailLabel = new JLabel("Email: " + currentUser.getEmail());
         emailLabel.setForeground(Color.WHITE);
+        emailLabel.setAlignmentX(LEFT_ALIGNMENT);
     
         JLabel balanceLabel = new JLabel("Balance: $" + currentUser.getBalance());
         balanceLabel.setForeground(Color.WHITE);
+        balanceLabel.setAlignmentX(LEFT_ALIGNMENT);
     
         userPanel.add(userLabel);
         userPanel.add(emailLabel);

@@ -17,7 +17,7 @@ public class MainView extends JPanel {
         btnPanel.setOpaque(false);
         btnPanel.add(createNavButton("Play Game", "GameView"));
         btnPanel.add(createNavButton("Set Spending Limit", "SpendingLimitView"));
-        btnPanel.add(createNavButton("User Settings", "UserView"));
+        btnPanel.add(createNavButton("User Profile", "UserView"));
 
         add(title, BorderLayout.NORTH);
         add(btnPanel, BorderLayout.CENTER);
