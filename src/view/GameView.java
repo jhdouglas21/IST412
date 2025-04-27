@@ -68,13 +68,21 @@ public class GameView extends JPanel {
         return button;
     }
 
-    private JButton createBackButton() {
+    private JPanel createBackButton() {
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(new Color(30, 30, 30));
+
         JButton backBtn = new JButton("Back to Main");
-        backBtn.setFont(new Font("SansSerif", Font.BOLD, 16));
+        backBtn.setPreferredSize(new Dimension(0, 50));
+        backBtn.setFont(new Font("Arial", Font.BOLD, 18));
         backBtn.setBackground(new Color(50, 50, 50));
         backBtn.setForeground(Color.WHITE);
-        backBtn.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+
         backBtn.addActionListener(e -> CasinoUI.showView("MainView"));
-        return backBtn;
+
+        panel.add(backBtn, BorderLayout.CENTER);
+
+        return panel;
     }
 }

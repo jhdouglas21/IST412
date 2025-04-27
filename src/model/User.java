@@ -1,8 +1,23 @@
 package model;
 
 public class User {
+
+    private String cardNumber;
+    private String cardExpiry;
+    private String cardCVV;
+
+    public void setCardInfo(String cardNumber, String expiry, String cvv) {
+        this.cardNumber = cardNumber;
+        this.cardExpiry = expiry;
+        this.cardCVV = cvv;
+    }
+
+    public String getCardNumber() { return cardNumber; }
+    public String getCardExpiry() { return cardExpiry; }
+    public String getCardCVV() { return cardCVV; }
+
     private String userId;
-    private String username;
+    public String username;
     private String password;
     private String email;
     private double balance;
@@ -50,6 +65,10 @@ public class User {
         return this.username.equals(username) && this.password.equals(password);
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public static boolean isValidPassword(String password) {
         if (password == null) return false;
 
@@ -75,3 +94,6 @@ public class User {
     public boolean resetPassword() {
         return true;
     }}
+
+    // In User.java
+

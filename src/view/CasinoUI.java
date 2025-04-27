@@ -22,10 +22,6 @@ public class CasinoUI {
     private static UserManager userManager;
     private static Map<String, JPanel> views = new HashMap<>();
 
-
-
-    static UserView userView = new UserView();
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(CasinoUI::createAndShowGUI);
     }
@@ -41,13 +37,11 @@ public class CasinoUI {
 
         notificationController = NotificationController.getInstance();
 
-
         // Login test credentials
         User testUser = new User("1", "testUser", "password123", "test@example.com", 100.0);
         LoginView loginView = new LoginView();
-        UserAuthController authController = new UserAuthController(testUser, userView);
+        UserAuthController authController = new UserAuthController(testUser);
 
-        // Login button behavior/authentication
         loginView.getLoginButton().addActionListener(e -> {
             String username = loginView.getUsername();
             String password = loginView.getPassword();
@@ -60,18 +54,15 @@ public class CasinoUI {
             }
         });
 
-        // Initialize userManager if not already done
         if (userManager == null) {
-            userManager = new UserManager(); // Assuming you have a default constructor
+            userManager = new UserManager();
         }
 
-        // New Account creation view
         NewUserController newUserController = new NewUserController(userManager);
         NewUserView newUserView = new NewUserView(newUserController);
         views.put("NewUserView", newUserView);
         mainPanel.add(newUserView, "NewUserView");
 
-        // Add login view to card layout
         mainPanel.add(loginView, "LoginView");
 
         frame.add(mainPanel);
@@ -80,13 +71,11 @@ public class CasinoUI {
         showView("LoginView");
     }
 
-
     public static void setCurrentUser(User user) {
         currentUser = user;
     }
 
     public static void setupPostLoginViews() {
-        // Clear or refresh views if needed
         spendingLimitModel = new SpendingLimit(notificationController);
         SpendingLimitView spendingLimitView = new SpendingLimitView();
         new SpendingLimitController(spendingLimitModel, spendingLimitView, currentUser.getUserId());
@@ -103,10 +92,7 @@ public class CasinoUI {
         notificationController.subscribe(currentUser.getUserId());
     }
 
-
     public static void showView(String viewName) {
         cardLayout.show(mainPanel, viewName);
     }
-
-
 }
