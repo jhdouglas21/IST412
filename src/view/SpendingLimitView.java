@@ -74,7 +74,7 @@ public class SpendingLimitView extends JPanel {
         backToMainButton.setPreferredSize(new Dimension(0, 50));
         backToMainButton.setFont(new Font("Arial", Font.BOLD, 18));
         backToMainButton.setBackground(new Color(50, 50, 50));
-        backToMainButton.setForeground(Color.WHITE);
+        backToMainButton.setForeground(Color.BLACK);
 
         backToMainButton.addActionListener(e -> CasinoUI.showView("MainView"));
 
@@ -169,7 +169,7 @@ public class SpendingLimitView extends JPanel {
 
     private void styleButton(JButton btn) {
         btn.setBackground(new Color(70, 70, 70));
-        btn.setForeground(Color.WHITE);
+        btn.setForeground(Color.BLACK);
         btn.setFont(new Font("Arial", Font.PLAIN, 16));
         btn.setFocusPainted(false);
         btn.setPreferredSize(new Dimension(120, 40));

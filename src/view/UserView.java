@@ -318,7 +318,7 @@ public class UserView extends JPanel {
         btn.setPreferredSize(new Dimension(0, 50));
         btn.setFont(new Font("Arial", Font.BOLD, 20));
         btn.setBackground(new Color(50, 50, 50));
-        btn.setForeground(Color.WHITE);
+        btn.setForeground(Color.BLACK);
         btn.setFocusPainted(false);
         return btn;
     }

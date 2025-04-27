@@ -77,7 +77,7 @@ public class GameView extends JPanel {
         backBtn.setPreferredSize(new Dimension(0, 50));
         backBtn.setFont(new Font("Arial", Font.BOLD, 18));
         backBtn.setBackground(new Color(50, 50, 50));
-        backBtn.setForeground(Color.WHITE);
+        backBtn.setForeground(Color.BLACK);
 
         backBtn.addActionListener(e -> CasinoUI.showView("MainView"));
 
