@@ -9,6 +9,9 @@ public class User extends Component {
     private String cardExpiry;
     private String cardCVV;
 
+    public User(String number, String testUser, String password123, String mail, double v) {
+    }
+
     public void setCardInfo(String cardNumber, String expiry, String cvv) {
         this.cardNumber = cardNumber;
         this.cardExpiry = expiry;
