@@ -6,8 +6,7 @@ Password: password123
 
 
 
-This week's assignments: refactoring code and adding 2 more use cases
-Use cases added: Play Game and Manage User Profile 
+This week's assignments: refactoring code and adding 2 more use cases: Withdrawl funds and Deposit Funds
 
 ## Team Member/ID and Contribution for M04-A03 'Two Implemented Use Cases Integrated with First Usecase + Login/Authentication Implementation with Clean, Refactored Code'
 
