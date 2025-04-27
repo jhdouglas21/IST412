@@ -78,7 +78,7 @@ public class CasinoUI {
     public static void setupPostLoginViews() {
         spendingLimitModel = new SpendingLimit(notificationController);
         SpendingLimitView spendingLimitView = new SpendingLimitView();
-        new SpendingLimitController(spendingLimitModel, spendingLimitView, currentUser.getUserId());
+        new SpendingLimitController(spendingLimitModel, spendingLimitView, currentUser.getUserId(), currentUser);
 
         TransactionController transactionController = new TransactionController(spendingLimitModel);
         Transaction deposit = new Transaction("001", 50.0, "deposit");
