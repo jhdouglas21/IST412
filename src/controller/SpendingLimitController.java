@@ -46,6 +46,12 @@ public class SpendingLimitController {
                 return;
             }
 
+            if(limit > currentUser.getBalance())
+            {
+                JOptionPane.showMessageDialog(view, "Limit cannot be greater than user balance", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             model.setSpendingLimit(currentUserId, limit);
 
             JOptionPane.showMessageDialog(view,
