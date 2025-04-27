@@ -1,6 +1,9 @@
 package model;
 
-public class User {
+import javax.swing.*;
+import java.awt.*;
+
+public class User extends Component {
 
     private String cardNumber;
     private String cardExpiry;
@@ -10,6 +13,8 @@ public class User {
         this.cardNumber = cardNumber;
         this.cardExpiry = expiry;
         this.cardCVV = cvv;
+
+        JOptionPane.showMessageDialog(this, "Card Information saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public String getCardNumber() { return cardNumber; }
@@ -19,14 +24,12 @@ public class User {
     private String userId;
     public String username;
     private String password;
-    private String email;
     private double balance;
 
-    public User(String userId, String username, String password, String email, double balance) {
+    public User(String userId, String username, String password, double balance) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.email = email;
         this.balance = balance;
     }
 
@@ -40,15 +43,16 @@ public class User {
         return userId;
     }
 
+    //gets password
+    public String getUserPassword() {
+        return password;
+    }
+
     //gets username
     public String getUsername() {
         return username;
     }
 
-    //gets email
-    public String getEmail() {
-        return email;
-    }
 
     //gets user balance
     public double getBalance() {
@@ -66,6 +70,7 @@ public class User {
     }
 
     public void setUsername(String username) {
+        JOptionPane.showMessageDialog(this, "Name saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         this.username = username;
     }
 
@@ -78,15 +83,20 @@ public class User {
     }
 
 
-    public boolean updatePassword(String oldPassword, String newPassword) {
-        if (!this.password.equals(oldPassword)) return false;
-
-        if (!isValidPassword(newPassword)) {
+    public boolean updatePassword(String oldPass, String newPass) {
+        if (!isValidPassword(newPass)) {
+            JOptionPane.showMessageDialog(this, "New password is not strong!", "Error", JOptionPane.INFORMATION_MESSAGE);
             return false; // or throw an error or log a warning
         }
 
-        this.password = newPassword;
-        return true;
+        if (oldPass.equals(this.password)) {
+            this.password = newPass;
+            JOptionPane.showMessageDialog(this, "Password changed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else{
+            JOptionPane.showMessageDialog(this, "Current password is not correct!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
     }
 
 

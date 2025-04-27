@@ -17,7 +17,7 @@ Main Code Refactoring Changes Made:
 
 ## Team Member/ID and Contribution for M04-A03 'Two Implemented Use Cases Integrated with First Usecase + Login/Authentication Implementation with Clean, Refactored Code'
 
-#1 Nick Falletta - Pecentage of effort: 20%. 
+#1 Nick Falletta - Pecentage of effort: 20%. Improved SpendingLimitView's and UserView's UI. Added the ability to change username, password, and credit card information in User Profile. Added the ability to deposit and withdraw money in User Profile.
 
 #2 John Douglas - Pecentage of effort: 20%. 
 

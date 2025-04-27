@@ -12,7 +12,7 @@ public class UserManager {
         }
 
         String userId = UUID.randomUUID().toString();
-        User user = new User(userId, username, password, email, 0.0);
+        User user =new User(userId, username, password, 0.0);
         users.put(username, user);
         return true;
     }

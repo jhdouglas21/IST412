@@ -64,7 +64,7 @@ public class UserView extends JPanel {
 
         JLabel sectionTitle = centeredTitle("Change Username");
         usernameLabel = centeredLabel("Current Username: " + user.getUsername());
-        usernameField = textField(user.getUsername());
+        usernameField = textField("");
 
         panel.add(sectionTitle);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
@@ -135,7 +135,6 @@ public class UserView extends JPanel {
         JButton saveBtn = mainBtn("Save Changes");
         saveBtn.addActionListener(e -> {
             saveChanges();
-            JOptionPane.showMessageDialog(this, "All changes saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             clearAllFields();
         });
 
@@ -163,6 +162,8 @@ public class UserView extends JPanel {
 
         if (!newPass.isEmpty() && newPass.equals(confirmPass)) {
             user.updatePassword(oldPass, newPass);
+        } else {
+            JOptionPane.showMessageDialog(this, "New passwords do not match!", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (!cardNumField.getText().trim().isEmpty() || !expiryField.getText().trim().isEmpty() || !cvvField.getText().trim().isEmpty()) {
@@ -193,7 +194,7 @@ public class UserView extends JPanel {
 
         JLabel sectionTitle = centeredTitle("Balance Management");
         balanceLabel = centeredLabel("Current Balance: $" + user.getBalance());
-        JTextField amountField = textField("0.00");
+        JTextField amountField = textField("");
         amountField.setName("amountField");
 
         JButton depositBtn = smallBtn("Deposit");

@@ -37,7 +37,7 @@ public class CasinoUI {
         notificationController = NotificationController.getInstance();
 
         // Login test credentials
-        User testUser = new User("1", "testUser", "password123", "test@example.com", 100.0);
+        User testUser = new User("1", "testUser", "password123", 100.0);
         LoginView loginView = new LoginView();
         UserView dummyView = new UserView();
         UserAuthController authController = new UserAuthController(testUser, dummyView);
