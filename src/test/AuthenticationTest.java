@@ -22,28 +22,27 @@ class AuthenticationTest {
         authController = new UserAuthController(testUser, dummyView);
     }
 
-    // ✅ Unit Test 1: Successful login
+    // Unit Test 1
     @Test
     void testSuccessfulAuthentication() {
         boolean result = authController.authenticate("testUser", "password123");
         assertTrue(result, "Authentication should succeed with correct credentials.");
     }
 
-    // ✅ Unit Test 2: Failed login
+    // Unit Test 2
     @Test
     void testFailedAuthentication() {
         boolean result = authController.authenticate("wrongUser", "wrongPassword");
         assertFalse(result, "Authentication should fail with incorrect credentials.");
     }
 
-    // ✅ Non-Functional Test: Authentication response time
+    // Non-Functional Test
     @Test
     void testAuthenticationSecurity_emptyInputs() {
         User dummyUser = new User("dummyId", "testUser", "password123", "dummy@example.com", 100.0);
         UserView dummyView = new UserView(dummyUser, NotificationController.getInstance());
         UserAuthController controller = new UserAuthController(dummyUser, dummyView);
 
-        // Try authenticating with empty username and password
         boolean result = controller.authenticate("", "");
         assertFalse(result, "Authentication should fail with empty username and password");
     }
