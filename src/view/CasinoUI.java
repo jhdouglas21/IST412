@@ -5,7 +5,6 @@ import model.SpendingLimit;
 import model.Transaction;
 import model.User;
 import model.UserManager;
-import view.UserView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +39,8 @@ public class CasinoUI {
         // Login test credentials
         User testUser = new User("1", "testUser", "password123", "test@example.com", 100.0);
         LoginView loginView = new LoginView();
-        UserAuthController authController = new UserAuthController(testUser);
+        UserView dummyView = new UserView();
+        UserAuthController authController = new UserAuthController(testUser, dummyView);
 
         loginView.getLoginButton().addActionListener(e -> {
             String username = loginView.getUsername();

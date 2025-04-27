@@ -55,6 +55,10 @@ public class UserView extends JPanel {
         add(bottomPanel(), BorderLayout.SOUTH);
     }
 
+    public UserView() {
+
+    }
+
     private JPanel userSection() {
         JPanel panel = sectionPanel();
 

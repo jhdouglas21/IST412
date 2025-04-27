@@ -1,5 +1,6 @@
 package test;
 
+import controller.NotificationController;
 import controller.UserAuthController;
 import model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,7 @@ class AuthenticationTest {
     @BeforeEach
     void setUp() {
         testUser = new User("1", "testUser", "password123", "test@example.com", 100.0);
-        dummyView = new UserView(); // This could be a mock or just a real instance if no behavior needed
+        dummyView = new UserView(testUser, NotificationController.getInstance());
         authController = new UserAuthController(testUser, dummyView);
     }
 
@@ -39,7 +40,7 @@ class AuthenticationTest {
     @Test
     void testAuthenticationSecurity_emptyInputs() {
         User dummyUser = new User("dummyId", "testUser", "password123", "dummy@example.com", 100.0);
-        UserView dummyView = new UserView();
+        UserView dummyView = new UserView(dummyUser, NotificationController.getInstance());
         UserAuthController controller = new UserAuthController(dummyUser, dummyView);
 
         // Try authenticating with empty username and password

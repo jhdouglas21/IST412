@@ -10,7 +10,7 @@ public class UserAuthController {
     private User model;
     private UserView view;
 
-    public UserAuthController(User model) {
+    public UserAuthController(User model, UserView dummyView) {
         this.model = model;
         this.view = view;
     }
