@@ -7,6 +7,7 @@ Password: password123
 
 
 This week's assignments: refactoring code and adding 2 more use cases
+Use cases added: Play Game and Manage User Profile 
 
 ## Team Member/ID and Contribution for M04-A03 'Two Implemented Use Cases Integrated with First Usecase + Login/Authentication Implementation with Clean, Refactored Code'
 
@@ -14,7 +15,7 @@ This week's assignments: refactoring code and adding 2 more use cases
 
 #2 John Douglas - Pecentage of effort: 20%. 
 
-#3 Taylor Smith - Pecentage of effort: 20%.
+#3 Taylor Smith - Pecentage of effort: 20%. Refactored Duplicate TransactionControllers, User Profile disprecencies, Adding back button to game view.
 
 #4 Nicholas Boyle - Pecentage of effort: 20%. 
 
