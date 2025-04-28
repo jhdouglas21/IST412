@@ -19,7 +19,7 @@ Main Code Refactoring Changes Made:
 
 #1 Nick Falletta - Pecentage of effort: 20%. Improved SpendingLimitView's and UserView's UI. Added the ability to change username, password, and credit card information in User Profile. Added the ability to deposit and withdraw money in User Profile.
 
-#2 John Douglas - Pecentage of effort: 20%. 
+#2 John Douglas - Pecentage of effort: 20%. Implemented new parameters for Spending Limit such as the user being unable to set a limit above the current user's balance nor below 0. Implemented test cases for both SpendingLimit and Authentication. 
 
 #3 Taylor Smith - Pecentage of effort: 20%. Refactored Duplicate TransactionControllers, User Profile disprecencies, Adding back button to game view.
 
