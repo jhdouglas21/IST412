@@ -23,6 +23,6 @@ Main Code Refactoring Changes Made:
 
 #3 Taylor Smith - Pecentage of effort: 20%. Refactored Duplicate TransactionControllers, User Profile disprecencies, Adding back button to game view.
 
-#4 Nicholas Boyle - Pecentage of effort: 20%. 
+#4 Nicholas Boyle - Pecentage of effort: 20%. Helped clean and edit code where need be. Made sure project requirements were met.
 
 #5 Sam Bender - Pecentage of effort: 20%. Helped refactor partial code such as system out logs to fit with refactoring from issue report and working on adding playable game that meets use case and satisfies system-wide based tests
