@@ -25,4 +25,4 @@ Main Code Refactoring Changes Made:
 
 #4 Nicholas Boyle - Pecentage of effort: 20%. 
 
-#5 Sam Bender - Pecentage of effort: 20%. 
+#5 Sam Bender - Pecentage of effort: 20%. Helped refactor partial code such as system out logs to fit with refactoring from issue report and working on adding playable game that meets use case and satisfies system-wide based tests
