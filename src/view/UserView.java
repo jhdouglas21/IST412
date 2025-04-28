@@ -156,17 +156,19 @@ public class UserView extends JPanel {
             usernameLabel.setText("Current Username: " + user.getUsername());
         }
 
-        String oldPass = new String(oldPassField.getPassword());
-        String newPass = new String(newPassField.getPassword());
-        String confirmPass = new String(confirmPassField.getPassword());
+        if (!oldPassField.getText().trim().isEmpty() && !newPassField.getText().trim().isEmpty() && !confirmPassField.getText().trim().isEmpty()) {
+            String oldPass = new String(oldPassField.getPassword());
+            String newPass = new String(newPassField.getPassword());
+            String confirmPass = new String(confirmPassField.getPassword());
 
-        if (!newPass.isEmpty() && newPass.equals(confirmPass)) {
-            user.updatePassword(oldPass, newPass);
-        } else {
-            JOptionPane.showMessageDialog(this, "New passwords do not match!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            if (!newPass.isEmpty() && newPass.equals(confirmPass)) {
+                user.updatePassword(oldPass, newPass);
+            } else {
+                JOptionPane.showMessageDialog(this, "New passwords do not match!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
 
-        if (!cardNumField.getText().trim().isEmpty() || !expiryField.getText().trim().isEmpty() || !cvvField.getText().trim().isEmpty()) {
+        if (!cardNumField.getText().trim().isEmpty() && !expiryField.getText().trim().isEmpty() && !cvvField.getText().trim().isEmpty()) {
             user.setCardInfo(cardNumField.getText().trim(), expiryField.getText().trim(), cvvField.getText().trim());
         }
 
