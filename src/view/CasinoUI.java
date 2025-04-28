@@ -89,6 +89,8 @@ public class CasinoUI {
         mainPanel.add(spendingLimitView, "SpendingLimitView");
         mainPanel.add(new UserView(currentUser, notificationController), "UserView");
 
+        mainPanel.add("BlackjackGameView", new BlackjackGameView());
+
         notificationController.subscribe(currentUser.getUserId());
     }
 

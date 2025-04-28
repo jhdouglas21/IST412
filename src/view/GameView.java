@@ -3,6 +3,7 @@ package view;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
+import view.BlackjackGameView;
 
 public class GameView extends JPanel {
 
@@ -55,14 +56,18 @@ public class GameView extends JPanel {
         button.addActionListener(e -> {
             CasinoGame game = factory.createGame();
 
-            // For now just print output to the JTextArea
             gameOutput.setText(""); // Clear old text
             gameOutput.append("Launching " + name + "...\n");
 
-            // Instead of System.out.println in game.play(), you can redirect output here
-            gameOutput.append(">>> ");
-            game.play();
-            gameOutput.append("Game started.");
+            // NEW: Special case for Blackjack
+            if (name.equals("Blackjack")) {
+                CasinoUI.showView("BlackjackGameView");
+            } else {
+                // Default behavior for other games
+                gameOutput.append(">>> ");
+                game.play();
+                gameOutput.append("Game started.");
+            }
         });
 
         return button;
