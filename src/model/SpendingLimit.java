@@ -20,7 +20,7 @@ public class SpendingLimit {
     }
 
     public double getSpendingLimit(String userId) {
-        return userLimits.getOrDefault(userId, 0.0);
+        return userLimits.getOrDefault(userId, Double.MAX_VALUE);
     }
 
     public double getUserSpending(String userId) {
