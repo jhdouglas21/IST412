@@ -6,6 +6,7 @@ import model.Transaction;
 import model.User;
 
 public class TransactionController {
+
     private SpendingLimit spendingLimit;
 
     public TransactionController(SpendingLimit spendingLimit) {
@@ -15,27 +16,26 @@ public class TransactionController {
     // analyzes transaction type and amount
     public boolean processTransaction(User user, Transaction transaction) {
         if (transaction == null || user == null) {
-            return false; // false if input is invalid
+            return false; // invalid input
         }
-
-        double transactionAmount = transaction.getAmount();
-
-        if (transactionAmount <= 0) {
-            return false; // false if transaction amount is negative
+        double amount = transaction.getAmount();
+        if (amount <= 0) {
+            return false; // no zero/negative transactions
         }
 
         if (transaction.getType().equalsIgnoreCase("deposit")) {
-            return deposit(user, transactionAmount);
+            return deposit(user, amount);
         } else if (transaction.getType().equalsIgnoreCase("bet")) {
+            // CORRECTED: allow bet only if within spending limit
             DailyLimitStrategy strategy = new DailyLimitStrategy(spendingLimit);
-            if (!spendingLimit.canSpend(user, transactionAmount, strategy)) {
-                return placeBet(user, transactionAmount);
+            if (spendingLimit.canSpend(user, amount, strategy)) {
+                return placeBet(user, amount);
             } else {
                 System.out.println("Transaction denied: spending limit exceeded.");
                 return false;
             }
         } else {
-            return false;
+            return false; // unsupported type
         }
     }
 
@@ -46,7 +46,7 @@ public class TransactionController {
         return true;
     }
 
-    // processes a bet
+    // processes a bet (withdrawal)
     public boolean placeBet(User user, double amount) {
         if (user.getBalance() >= amount) {
             user.setBalance(user.getBalance() - amount);
@@ -54,11 +54,12 @@ public class TransactionController {
             logTransaction(user, "Bet", amount);
             return true;
         }
-        return false; // not enough funds
+        return false; // insufficient funds
     }
 
     // logs the transaction
     private void logTransaction(User user, String type, double amount) {
-        System.out.println("Transaction Logged: User: " + user.getUsername() + ", Type: " + type + ", Amount: $" + amount);
+        System.out.println("Transaction Logged: User: " 
+            + user.getUsername() + ", Type: " + type + ", Amount: $" + amount);
     }
 }

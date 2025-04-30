@@ -1,8 +1,8 @@
 package view;
 
 import controller.NewUserController;
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 import model.User;
 
 public class NewUserView extends JPanel {
