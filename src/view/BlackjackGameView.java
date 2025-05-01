@@ -46,6 +46,7 @@ public class BlackjackGameView extends JPanel {
             updateBalanceLabel();
             return;
         }
+        updateBalanceLabel();
         addCard(); addCard();
     }
 
