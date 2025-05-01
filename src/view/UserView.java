@@ -201,17 +201,48 @@ public class UserView extends JPanel {
 
         JButton depositBtn = smallBtn("Deposit");
         depositBtn.addActionListener(e -> {
-            try {
-                double amount = Double.parseDouble(amountField.getText());
-                if (amount > 0) {
-                    user.setBalance(user.getBalance() + amount);
-                    balanceLabel.setText("Current Balance: $" + user.getBalance());
-                    JOptionPane.showMessageDialog(this, "Deposited Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid amount!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
+      try {
+        double amount = Double.parseDouble(amountField.getText());
+        if (amount > 0) {
+          TransactionController tx = CasinoUI.getTransactionController();
+          Transaction depositTx = new Transaction(
+            UUID.randomUUID().toString(),
+            amount,
+            "deposit"
+          );
+          if (tx.processTransaction(user, depositTx)) {
+            balanceLabel.setText("Current Balance: $" + user.getBalance());
+            JOptionPane.showMessageDialog(
+              this,
+              "Deposited Successfully!",
+              "Success",
+              JOptionPane.INFORMATION_MESSAGE
+            );
+          } else {
+            JOptionPane.showMessageDialog(
+              this,
+              "Deposit failed!",
+              "Error",
+              JOptionPane.ERROR_MESSAGE
+            );
+          }
+        } else {
+          JOptionPane.showMessageDialog(
+            this,
+            "Amount must be positive!",
+            "Error",
+            JOptionPane.ERROR_MESSAGE
+          );
+        }
+      } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Invalid amount!",
+          "Error",
+          JOptionPane.ERROR_MESSAGE
+        );
+      }
+    });
 
         JButton withdrawBtn = smallBtn("Withdraw");
         withdrawBtn.addActionListener(e -> {
