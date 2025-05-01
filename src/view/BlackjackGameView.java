@@ -24,7 +24,7 @@ public class BlackjackGameView extends JPanel {
 
         myCards = new ArrayList<>();
         myHandTotal = 0;
-        currentBet = 10.0;     // default bet
+        currentBet = 0.0;     // default bet
 
         cardsPanel = createCardsPanel();
         JPanel infoPanel = createInfoPanel();
