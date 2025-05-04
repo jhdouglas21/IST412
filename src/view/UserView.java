@@ -1,12 +1,15 @@
 package view;
 
 import controller.NotificationController;
+import controller.TransactionController;
+import model.Transaction;
 import model.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class UserView extends JPanel {
 
