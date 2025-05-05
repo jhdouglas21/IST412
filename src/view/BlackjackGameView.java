@@ -2,8 +2,6 @@ package view;
 
 import controller.TransactionController;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
@@ -36,13 +34,6 @@ public class BlackjackGameView extends JPanel {
         add(infoPanel, BorderLayout.EAST);
         add(backBtnPanel, BorderLayout.SOUTH);
 
-        this.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentShown(ComponentEvent e) {
-                updateBalanceLabel();
-            }
-        });
-
         dealInitialCards();
     }
 
@@ -60,34 +51,45 @@ public class BlackjackGameView extends JPanel {
     }
 
     private JPanel createCardsPanel() {
-        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 50));
-        p.setBackground(new Color(24, 56, 10));
-        return p;
+        JPanel panel = new JPanel();
+         panel.setBackground(new Color(24, 56, 10));
+         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 50));
+         return panel;
     }
 
     private JLabel createCard() {
-        String v = getRandomCardText();
-        JLabel c = new JLabel(v, SwingConstants.CENTER);
-        c.setPreferredSize(new Dimension(80,120));
-        c.setOpaque(true);
-        c.setBackground(Color.WHITE);
-        c.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
-        c.setFont(new Font("SansSerif", Font.BOLD,24));
-        c.setForeground(new Random().nextBoolean() ? Color.RED : Color.BLACK);
-        myHandTotal += getCardValue(v);
-        return c;
+        String value = getRandomCardText();
+         JLabel card = new JLabel(value, SwingConstants.CENTER);
+         card.setPreferredSize(new Dimension(80, 120));
+         card.setOpaque(true);
+         card.setBackground(Color.WHITE);
+         card.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+         card.setFont(new Font("SansSerif", Font.BOLD, 24));
+ 
+         if (new Random().nextBoolean()) {
+             card.setForeground(Color.RED);
+         } else {
+             card.setForeground(Color.BLACK);
+         }
+ 
+         myHandTotal += getCardValue(value);
+ 
+         return card;
     }
 
     private String getRandomCardText() {
-        String[] vals = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-        return vals[new Random().nextInt(vals.length)];
+        String[] values = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+         Random rand = new Random();
+         return values[rand.nextInt(values.length)];
     }
 
-    private int getCardValue(String v) {
-        switch (v) {
-            case "A":   return 11;
-            case "J": case "Q": case "K": return 10;
-            default:    return Integer.parseInt(v);
+    private int getCardValue(String value) {
+        switch (value) {
+            case "A": return 11;
+            case "J":
+            case "Q":
+            case "K": return 10;
+            default: return Integer.parseInt(value);
         }
     }
 
@@ -106,19 +108,14 @@ public class BlackjackGameView extends JPanel {
     }
 
     private JPanel createInfoPanel() {
-        JPanel p = new JPanel();
-        p.setBackground(new Color(24,56,10));
-        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-        p.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(24, 56, 10));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         balanceLabel = new JLabel();
-        balanceLabel.setForeground(new Color(255,215,0));
-        balanceLabel.setFont(new Font("SansSerif",Font.BOLD,16));
-        balanceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        betLabel = new JLabel("Current hand bet: $" + currentBet);
-        betLabel.setForeground(new Color(255,215,0));
-        betLabel.setFont(new Font("SansSerif",Font.BOLD,16));
+        balanceLabel.setForeground(new Color(255, 215, 0));
+        balanceLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
         betLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         myHandLabel = new JLabel("My hand total: 0");
@@ -174,29 +171,28 @@ public class BlackjackGameView extends JPanel {
         playAgainButton.setVisible(false);
         playAgainButton.addActionListener(e -> resetGame());
 
-        p.add(balanceLabel);
-        p.add(Box.createRigidArea(new Dimension(0,10)));
-        p.add(betLabel);
-        p.add(Box.createRigidArea(new Dimension(0,20)));
-        p.add(myHandLabel);
-        p.add(Box.createRigidArea(new Dimension(0,10)));
-        p.add(dealerHandLabel);
-        p.add(Box.createRigidArea(new Dimension(0,20)));
-        p.add(inc);
-        p.add(Box.createRigidArea(new Dimension(0,10)));
-        p.add(dec);
-        p.add(Box.createRigidArea(new Dimension(0,30)));
-        p.add(actions);
-        p.add(Box.createRigidArea(new Dimension(0,20)));
-        p.add(resultLabel);
-        p.add(Box.createRigidArea(new Dimension(0,20)));
-        p.add(playAgainButton);
+        panel.add(balanceLabel);
+        panel.add(Box.createRigidArea(new Dimension(0,10)));
+        panel.add(betLabel);
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
+        panel.add(myHandLabel);
+        panel.add(Box.createRigidArea(new Dimension(0,10)));
+        panel.add(dealerHandLabel);
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
+        panel.add(inc);
+        panel.add(Box.createRigidArea(new Dimension(0,10)));
+        panel.add(dec);
+        panel.add(Box.createRigidArea(new Dimension(0,30)));
+        panel.add(actions);
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
+        panel.add(resultLabel);
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
+        panel.add(playAgainButton);
 
-        // initialize labels
         updateBalanceLabel();
         updateBetLabel();
 
-        return p;
+        return panel;
     }
 
     private void updateHandLabel() {
@@ -220,13 +216,11 @@ public class BlackjackGameView extends JPanel {
     }
 
     private void onStand() {
-        // simulate dealer
         int dealerTotal = new Random().nextInt(13) + 14;
         dealerHandLabel.setText("Dealer hand: " + dealerTotal);
 
         boolean playerWins = (dealerTotal > 21) || (myHandTotal <= 21 && myHandTotal > dealerTotal);
         if (playerWins) {
-            // payout
             TransactionController tx = CasinoUI.getTransactionController();
             User user = CasinoUI.getCurrentUser();
             Transaction winTx = new Transaction(UUID.randomUUID().toString(), currentBet, "deposit");
@@ -272,11 +266,5 @@ public class BlackjackGameView extends JPanel {
         b.addActionListener(e -> CasinoUI.showView("MainView"));
         p.add(b, BorderLayout.CENTER);
         return p;
-    }
-
-    @Override
-    public void addNotify() {
-        super.addNotify();
-        balanceLabel.setText("Current Balance: $" + CasinoUI.getCurrentUser().getBalance());
     }
 }
