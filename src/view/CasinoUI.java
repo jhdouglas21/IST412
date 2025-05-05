@@ -18,7 +18,7 @@ public class CasinoUI {
     private static User currentUser;
     private static NotificationController notificationController;
     private static SpendingLimit spendingLimitModel;
-    private static TransactionController transactionController;  // NEW
+    private static TransactionController transactionController;
     private static UserManager userManager;
     private static Map<String, JPanel> views = new HashMap<>();
 
@@ -37,7 +37,6 @@ public class CasinoUI {
 
         notificationController = NotificationController.getInstance();
 
-        // test credentials
         User testUser = new User("1", "testUser", "password123", 100.0);
         LoginView loginView = new LoginView();
         UserView dummyView = new UserView();
@@ -80,10 +79,8 @@ public class CasinoUI {
         new SpendingLimitController(
             spendingLimitModel, spendingLimitView, currentUser.getUserId(), currentUser);
 
-        // ASSIGN to the static field so views can place bets, do deposits, etc.
         transactionController = new TransactionController(spendingLimitModel);
 
-        // seed initial deposit (per your tests)
         Transaction deposit = new Transaction("001", 50.0, "deposit");
         transactionController.processTransaction(currentUser, deposit);
 
