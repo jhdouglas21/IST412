@@ -16,17 +16,17 @@ public class TransactionController {
     // analyzes transaction type and amount
     public boolean processTransaction(User user, Transaction transaction) {
         if (transaction == null || user == null) {
-            return false; // invalid input
+            return false; // false if input is invalid
         }
         double amount = transaction.getAmount();
+        
         if (amount <= 0) {
-            return false; // no zero/negative transactions
+            return false; // false if transaction amount is negative
         }
 
         if (transaction.getType().equalsIgnoreCase("deposit")) {
             return deposit(user, amount);
         } else if (transaction.getType().equalsIgnoreCase("bet")) {
-            // CORRECTED: allow bet only if within spending limit
             DailyLimitStrategy strategy = new DailyLimitStrategy(spendingLimit);
             if (spendingLimit.canSpend(user, amount, strategy)) {
                 return placeBet(user, amount);
@@ -35,7 +35,7 @@ public class TransactionController {
                 return false;
             }
         } else {
-            return false; // unsupported type
+            return false;
         }
     }
 
@@ -46,7 +46,7 @@ public class TransactionController {
         return true;
     }
 
-    // processes a bet (withdrawal)
+    // processes a bet
     public boolean placeBet(User user, double amount) {
         if (user.getBalance() >= amount) {
             user.setBalance(user.getBalance() - amount);
@@ -54,12 +54,11 @@ public class TransactionController {
             logTransaction(user, "Bet", amount);
             return true;
         }
-        return false; // insufficient funds
+        return false; // not ewnough funds
     }
 
     // logs the transaction
     private void logTransaction(User user, String type, double amount) {
-        System.out.println("Transaction Logged: User: " 
-            + user.getUsername() + ", Type: " + type + ", Amount: $" + amount);
+        System.out.println("Transaction Logged: User: " + user.getUsername() + ", Type: " + type + ", Amount: $" + amount);
     }
 }
