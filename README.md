@@ -17,7 +17,7 @@ Main Code Refactoring Changes Made:
 
 ## Team Member/ID and Contribution for M05-A01 Final Project Implementation
 
-#1 Nick Falletta - Pecentage of effort: 20%. 
+#1 Nick Falletta - Pecentage of effort: 20%. Improved the login and create new account UI design. Made making a new password match the password checker used when changing your password (requires a digit, lower and upper case letter, symbol, and a length of 8). Gave the withdraw and deposit btns in UserView color.
 
 #2 John Douglas - Pecentage of effort: 20%. Mostly just bug fixing certain functions, testing to ensure proper functionality with error handling, and ensuring that the balance for both Black Jack and the User Settings update to match the same value. Before, the balance would not update accurately unless the user pressed play again for Black Jack or deposit/withdraw for User Settings. To fix this, I simply did a component override listener to ensure when either view is loaded the jlabel is correctly showing the proper balance. 
 

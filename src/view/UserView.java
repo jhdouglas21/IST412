@@ -214,6 +214,8 @@ public class UserView extends JPanel {
         amountField.setName("amountField");
 
         JButton depositBtn = smallBtn("Deposit");
+        depositBtn.setBackground(new Color(0, 129, 10));
+        depositBtn.setForeground(Color.WHITE);
         depositBtn.addActionListener(e -> {
       try {
         double amount = Double.parseDouble(amountField.getText());
@@ -259,6 +261,8 @@ public class UserView extends JPanel {
     });
 
         JButton withdrawBtn = smallBtn("Withdraw");
+        withdrawBtn.setBackground(new Color(0, 136, 255));
+        withdrawBtn.setForeground(Color.WHITE);
         withdrawBtn.addActionListener(e -> {
             try {
                 double amount = Double.parseDouble(amountField.getText());

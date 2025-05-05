@@ -4,73 +4,81 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginView extends JPanel {
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    private JButton loginButton;
-    private JButton createAccountButton;
+    private JTextField name;
+    private JPasswordField pass;
+    private JButton loginBtn;
+    private JButton accountBtn;
 
     public LoginView() {
         setLayout(new GridBagLayout());
         setBackground(new Color(40, 40, 40));
 
-        JLabel title = new JLabel("Casino Login");
-        title.setFont(new Font("Serif", Font.BOLD, 28));
-        title.setForeground(Color.WHITE);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(15, 20, 15, 20);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel userLabel = new JLabel("Username:");
-        userLabel.setForeground(Color.WHITE);
-        usernameField = new JTextField(15);
+        JLabel title = new JLabel("The One and Only IST412 Casino");
+        title.setFont(new Font("SansSerif", Font.BOLD, 28));
+        title.setForeground(new Color(255, 215, 0));
+        gbc.gridy = 0;
+        add(title, gbc);
+
+        JLabel nameLabel = new JLabel("Username:");
+        nameLabel.setForeground(Color.WHITE);
+        nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        gbc.gridy++;
+        add(nameLabel, gbc);
+
+        name = new JTextField(20);
+        name.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        name.setMargin(new Insets(5, 10, 5, 10));
+        gbc.gridy++;
+        add(name, gbc);
 
         JLabel passLabel = new JLabel("Password:");
         passLabel.setForeground(Color.WHITE);
-        passwordField = new JPasswordField(15);
-
-        loginButton = new JButton("Login");
-        loginButton.setBackground(new Color(70, 130, 180));
-        loginButton.setForeground(Color.BLACK);
-
-        createAccountButton = new JButton("Create Account"); // fixed here
-        createAccountButton.setBackground(new Color(100, 200, 100));
-        createAccountButton.setForeground(Color.BLACK);
-        createAccountButton.addActionListener(e -> CasinoUI.showView("NewUserView"));
-
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        add(title, gbc);
-
-        gbc.gridwidth = 1;
-        gbc.gridy++;
-        add(userLabel, gbc);
-        gbc.gridx = 1;
-        add(usernameField, gbc);
-
-        gbc.gridx = 0;
+        passLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
         gbc.gridy++;
         add(passLabel, gbc);
-        gbc.gridx = 1;
-        add(passwordField, gbc);
 
-        gbc.gridx = 0;
+        pass = new JPasswordField(20);
+        pass.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        pass.setMargin(new Insets(5, 10, 5, 10));
         gbc.gridy++;
-        gbc.gridwidth = 2;
-        add(loginButton, gbc);
+        add(pass, gbc);
 
-        gbc.gridy++; // Add the "Create Account" button below the login button
-        add(createAccountButton, gbc);
+        loginBtn = new JButton("Login");
+        styleBtn(loginBtn, new Color(45, 120, 200));
+        gbc.gridy++;
+        add(loginBtn, gbc);
+
+        accountBtn = new JButton("Create Account");
+        styleBtn(accountBtn, new Color(100, 100, 255));
+        accountBtn.addActionListener(e -> CasinoUI.showView("NewUserView"));
+        gbc.gridy++;
+        add(accountBtn, gbc);
+    }
+
+    private void styleBtn(JButton btn, Color color) {
+        btn.setFocusPainted(false);
+        btn.setFont(new Font("SansSerif", Font.BOLD, 14));
+        btn.setBackground(color);
+        btn.setForeground(Color.WHITE);
+        btn.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
     }
 
     public String getUsername() {
-        return usernameField.getText().trim();
+        return name.getText().trim();
     }
 
     public String getPassword() {
-        return new String(passwordField.getPassword()).trim();
+        return new String(pass.getPassword()).trim();
     }
 
     public JButton getLoginButton() {
-        return loginButton;
+        return loginBtn;
     }
 }
