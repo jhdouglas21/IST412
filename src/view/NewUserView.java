@@ -59,11 +59,9 @@ public class NewUserView extends JPanel {
             if (newUserController.createUser(username, password)) {
                 JOptionPane.showMessageDialog(this, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                // Set currentUser
                 User newUser = new User("generatedID", username, password, 0); // You might want to generate a real ID and add email handling
                 CasinoUI.setCurrentUser(newUser);
 
-                // Setup post-login views and navigate to main
                 CasinoUI.setupPostLoginViews();
                 CasinoUI.showView("MainView");
 

@@ -18,7 +18,7 @@ public class NewUserController {
         }
 
         if (userManager.getUser(username) != null) {
-            return false; // User already exists
+            return false;
         }
 
         User newUser = new User(username, password);

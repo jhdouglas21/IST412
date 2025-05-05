@@ -2,6 +2,8 @@ package view;
 
 import controller.TransactionController;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
@@ -33,6 +35,13 @@ public class BlackjackGameView extends JPanel {
         add(cardsPanel, BorderLayout.CENTER);
         add(infoPanel, BorderLayout.EAST);
         add(backBtnPanel, BorderLayout.SOUTH);
+
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                updateBalanceLabel();
+            }
+        });
 
         dealInitialCards();
     }

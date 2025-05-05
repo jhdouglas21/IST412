@@ -16,12 +16,12 @@ public class TransactionController {
     // analyzes transaction type and amount
     public boolean processTransaction(User user, Transaction transaction) {
         if (transaction == null || user == null) {
-            return false; // false if input is invalid
+            return false;
         }
         double amount = transaction.getAmount();
         
         if (amount <= 0) {
-            return false; // false if transaction amount is negative
+            return false;
         }
 
         if (transaction.getType().equalsIgnoreCase("deposit")) {
@@ -54,7 +54,7 @@ public class TransactionController {
             logTransaction(user, "Bet", amount);
             return true;
         }
-        return false; // not ewnough funds
+        return false;
     }
 
     // logs the transaction

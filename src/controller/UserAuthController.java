@@ -55,17 +55,14 @@ public class UserAuthController {
     }
 
 
-    //gets username of user
     public String getUsername() {
         return model.getUsername();
     }
 
-    //gets user's current balance
     public double getUserBalance() {
         return model.getBalance();
     }
 
-    //updates user's balance
     public boolean updateUserBalance(double newBalance) {
         if (newBalance < 0) {
             JOptionPane.showMessageDialog(view, "Balance cannot be negative!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -76,7 +73,6 @@ public class UserAuthController {
         return true;
     }
 
-    //displays user details
     public void displayUserInfo() {
         String userInfo = "Username: " + getUsername() + "\nBalance: $" + getUserBalance();
         JOptionPane.showMessageDialog(view, userInfo, "User Info", JOptionPane.INFORMATION_MESSAGE);

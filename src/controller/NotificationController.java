@@ -4,7 +4,6 @@ import java.util.*;
 
 public class NotificationController {
 
-    // ---- Singleton ----
     private static NotificationController instance;
 
     private NotificationController() {}
@@ -16,7 +15,6 @@ public class NotificationController {
         return instance;
     }
 
-    // ---- Observer Pattern ----
     public interface NotificationObserver {
         void update(String userId, String category, String message);
     }
@@ -37,7 +35,6 @@ public class NotificationController {
         }
     }
 
-    // ---- Subscriber Preferences ----
     private Set<String> subscribers = new HashSet<>();
     private Map<String, Set<String>> userPreferences = new HashMap<>();
 
@@ -80,7 +77,6 @@ public class NotificationController {
         System.out.println("Notification Logged: " + message);
     }
 
-    // ---- Command Pattern ----
     public interface CasinoCommand {
         void execute();
     }
