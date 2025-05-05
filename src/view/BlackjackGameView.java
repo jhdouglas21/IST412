@@ -26,7 +26,7 @@ public class BlackjackGameView extends JPanel {
 
         myCards = new ArrayList<>();
         myHandTotal = 0;
-        currentBet = 0.0;     // default bet
+        currentBet = 1.0;  // default bet
 
         cardsPanel = createCardsPanel();
         JPanel infoPanel = createInfoPanel();
@@ -125,6 +125,7 @@ public class BlackjackGameView extends JPanel {
         balanceLabel = new JLabel();
         balanceLabel.setForeground(new Color(255, 215, 0));
         balanceLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        balanceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         betLabel = new JLabel("Current hand bet: $" + currentBet);
         betLabel.setForeground(new Color(255,215,0));
@@ -281,3 +282,5 @@ public class BlackjackGameView extends JPanel {
         return p;
     }
 }
+
+
