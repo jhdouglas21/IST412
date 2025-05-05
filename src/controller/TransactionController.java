@@ -6,6 +6,7 @@ import model.Transaction;
 import model.User;
 
 public class TransactionController {
+
     private SpendingLimit spendingLimit;
 
     public TransactionController(SpendingLimit spendingLimit) {
@@ -15,21 +16,20 @@ public class TransactionController {
     // analyzes transaction type and amount
     public boolean processTransaction(User user, Transaction transaction) {
         if (transaction == null || user == null) {
-            return false; // false if input is invalid
+            return false;
         }
-
-        double transactionAmount = transaction.getAmount();
-
-        if (transactionAmount <= 0) {
-            return false; // false if transaction amount is negative
+        double amount = transaction.getAmount();
+        
+        if (amount <= 0) {
+            return false;
         }
 
         if (transaction.getType().equalsIgnoreCase("deposit")) {
-            return deposit(user, transactionAmount);
+            return deposit(user, amount);
         } else if (transaction.getType().equalsIgnoreCase("bet")) {
             DailyLimitStrategy strategy = new DailyLimitStrategy(spendingLimit);
-            if (!spendingLimit.canSpend(user, transactionAmount, strategy)) {
-                return placeBet(user, transactionAmount);
+            if (spendingLimit.canSpend(user, amount, strategy)) {
+                return placeBet(user, amount);
             } else {
                 System.out.println("Transaction denied: spending limit exceeded.");
                 return false;
@@ -54,7 +54,7 @@ public class TransactionController {
             logTransaction(user, "Bet", amount);
             return true;
         }
-        return false; // not enough funds
+        return false;
     }
 
     // logs the transaction

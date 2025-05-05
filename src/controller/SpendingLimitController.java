@@ -13,13 +13,13 @@ public class SpendingLimitController {
     private SpendingLimit model;
     private SpendingLimitView view;
     private String currentUserId;
-    private User currentUser; // <-- Add this
+    private User currentUser;
 
     public SpendingLimitController(SpendingLimit model, SpendingLimitView view, String userId, User user) {
         this.model = model;
         this.view = view;
         this.currentUserId = userId;
-        this.currentUser = user; // <-- Save the user reference
+        this.currentUser = user;
 
         view.getFinishButton().addActionListener(new ActionListener() {
             @Override

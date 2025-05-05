@@ -17,43 +17,35 @@ public class Transaction {
         this.status = "pending"; // Default status
     }
 
-    //gets transaction id
     public String getTransactionId() {
         return transactionId;
     }
 
 
-    // gets the transaction amount
     public double getAmount() {
         return amount;
     }
 
-    // gets transaction type
     public String getType() {
         return type;
     }
 
-    //gets timestamp
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    // gets transaction status
     public String getStatus() {
         return status;
     }
 
-    // updates status
     public void setStatus(String status) {
         this.status = status;
     }
 
-    //validates transaction
     public boolean isValid() {
         return amount > 0 && (type.equalsIgnoreCase("deposit") || type.equalsIgnoreCase("bet") || type.equalsIgnoreCase("voucher"));
     }
 
-    //returns details of transaction
     @Override
     public String toString() {
         return "Transaction ID: " + transactionId +

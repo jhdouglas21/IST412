@@ -1,5 +1,6 @@
 package view;
 
+import controller.NotificationController;
 import model.SpendingLimit;
 
 public class SpendingLimitPresenter {
@@ -28,6 +29,17 @@ public class SpendingLimitPresenter {
             }
 
             model.setSpendingLimit(userId, limit);
+
+            NotificationController notifController = NotificationController.getInstance();
+            notifController.subscribe(userId);
+
+            boolean notify = view.shouldNotify();
+            boolean block = view.shouldBlock();
+
+            notifController.setUserPreference(userId, "spending", notify);
+            notifController.setUserPreference(userId, "blockLimit", block);
+            notifController.savePreferences(userId, true, notify, true, true);
+
             view.showSuccess("Spending limit of $" + limit + " set successfully!");
 
         } catch (NumberFormatException e) {
