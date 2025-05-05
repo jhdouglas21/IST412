@@ -23,6 +23,6 @@ Main Code Refactoring Changes Made:
 
 #3 Taylor Smith - Pecentage of effort: 20%. Fixed some minor issues in code: changed starting bet amount to be $5 as 0 was interfering with our spending limit controls. Cleaned up some code by getting rid of unnessary tests in main method.
 
-#4 Nicholas Boyle - Pecentage of effort: 20%.
+#4 Nicholas Boyle - Pecentage of effort: 20%. Implemented final use case of making sure that spending limit functions properly. Implemented changes that showed consistent bank balance across entire platform and updated funds when game is played. Fixed issues with blackjack hands being dealt automatically instead of waiting for user to start game. 
 
 #5 Sam Bender - Pecentage of effort: 20%. 
