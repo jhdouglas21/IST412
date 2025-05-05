@@ -7,6 +7,8 @@ import model.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +16,7 @@ import java.util.UUID;
 public class UserView extends JPanel {
 
     private JCheckBox notifBox, spendBox, transactBox, gameBox;
-    private User user;
+
     private NotificationController notifController;
     private List<JTextField> textFields = new ArrayList<>();
     private List<JPasswordField> passFields = new ArrayList<>();
@@ -24,7 +26,6 @@ public class UserView extends JPanel {
     private JPasswordField oldPassField, newPassField, confirmPassField;
 
     public UserView(User user, NotificationController notifController) {
-        this.user = user;
         this.notifController = notifController;
 
         setLayout(new BorderLayout());
@@ -56,6 +57,17 @@ public class UserView extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(bottomPanel(), BorderLayout.SOUTH);
+
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                updateBalanceLabel();
+            }
+        });
+    }
+
+    private void updateBalanceLabel() {
+        balanceLabel.setText("Balance: $" + CasinoUI.getCurrentUser().getBalance());
     }
 
     public UserView() {
@@ -66,7 +78,7 @@ public class UserView extends JPanel {
         JPanel panel = sectionPanel();
 
         JLabel sectionTitle = centeredTitle("Change Username");
-        usernameLabel = centeredLabel("Current Username: " + user.getUsername());
+        usernameLabel = centeredLabel("Current Username: " + CasinoUI.getCurrentUser().getUsername());
         usernameField = textField("");
 
         panel.add(sectionTitle);
@@ -155,8 +167,8 @@ public class UserView extends JPanel {
 
     private void saveChanges() {
         if (!usernameField.getText().trim().isEmpty()) {
-            user.setUsername(usernameField.getText().trim());
-            usernameLabel.setText("Current Username: " + user.getUsername());
+            CasinoUI.getCurrentUser().setUsername(usernameField.getText().trim());
+            usernameLabel.setText("Current Username: " + CasinoUI.getCurrentUser().getUsername());
         }
 
         if (!oldPassField.getText().trim().isEmpty() && !newPassField.getText().trim().isEmpty() && !confirmPassField.getText().trim().isEmpty()) {
@@ -165,18 +177,18 @@ public class UserView extends JPanel {
             String confirmPass = new String(confirmPassField.getPassword());
 
             if (!newPass.isEmpty() && newPass.equals(confirmPass)) {
-                user.updatePassword(oldPass, newPass);
+                CasinoUI.getCurrentUser().updatePassword(oldPass, newPass);
             } else {
                 JOptionPane.showMessageDialog(this, "New passwords do not match!", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         }
 
         if (!cardNumField.getText().trim().isEmpty() && !expiryField.getText().trim().isEmpty() && !cvvField.getText().trim().isEmpty()) {
-            user.setCardInfo(cardNumField.getText().trim(), expiryField.getText().trim(), cvvField.getText().trim());
+            CasinoUI.getCurrentUser().setCardInfo(cardNumField.getText().trim(), expiryField.getText().trim(), cvvField.getText().trim());
         }
 
         notifController.savePreferences(
-                user.getUsername(),
+                CasinoUI.getCurrentUser().getUsername(),
                 notifBox.isSelected(),
                 spendBox.isSelected(),
                 transactBox.isSelected(),
@@ -196,9 +208,8 @@ public class UserView extends JPanel {
 
     private JPanel balanceSection() {
         JPanel panel = sectionPanel();
-
         JLabel sectionTitle = centeredTitle("Balance Management");
-        balanceLabel = centeredLabel("Current Balance: $" + user.getBalance());
+        balanceLabel = centeredLabel("Current Balance: $" + CasinoUI.getCurrentUser().getBalance());
         JTextField amountField = textField("");
         amountField.setName("amountField");
 
@@ -213,8 +224,8 @@ public class UserView extends JPanel {
             amount,
             "deposit"
           );
-          if (tx.processTransaction(user, depositTx)) {
-            balanceLabel.setText("Current Balance: $" + user.getBalance());
+          if (tx.processTransaction(CasinoUI.getCurrentUser(), depositTx)) {
+            balanceLabel.setText("Current Balance: $" + CasinoUI.getCurrentUser().getBalance());
             JOptionPane.showMessageDialog(
               this,
               "Deposited Successfully!",
@@ -251,9 +262,9 @@ public class UserView extends JPanel {
         withdrawBtn.addActionListener(e -> {
             try {
                 double amount = Double.parseDouble(amountField.getText());
-                if (amount > 0 && amount <= user.getBalance()) {
-                    user.setBalance(user.getBalance() - amount);
-                    balanceLabel.setText("Current Balance: $" + user.getBalance());
+                if (amount > 0 && amount <= CasinoUI.getCurrentUser().getBalance()) {
+                    CasinoUI.getCurrentUser().setBalance(CasinoUI.getCurrentUser().getBalance() - amount);
+                    balanceLabel.setText("Current Balance: $" + CasinoUI.getCurrentUser().getBalance());
                     JOptionPane.showMessageDialog(this, "Withdrawn Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid withdrawal amount!", "Error", JOptionPane.ERROR_MESSAGE);
