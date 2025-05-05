@@ -19,7 +19,7 @@ Main Code Refactoring Changes Made:
 
 #1 Nick Falletta - Pecentage of effort: 20%. 
 
-#2 John Douglas - Pecentage of effort: 20%.
+#2 John Douglas - Pecentage of effort: 20%. Mostly just bug fixing certain functions, testing to ensure proper functionality with error handling, and ensuring that the balance for both Black Jack and the User Settings update to match the same value. Before, the balance would not update accurately unless the user pressed play again for Black Jack or deposit/withdraw for User Settings. To fix this, I simply did a component override listener to ensure when either view is loaded the jlabel is correctly showing the proper balance. 
 
 #3 Taylor Smith - Pecentage of effort: 20%. 
 
