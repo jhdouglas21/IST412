@@ -116,6 +116,10 @@ public class BlackjackGameView extends JPanel {
         balanceLabel = new JLabel();
         balanceLabel.setForeground(new Color(255, 215, 0));
         balanceLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        
+        betLabel = new JLabel("Current hand bet: $" + currentBet);
+        betLabel.setForeground(new Color(255,215,0));
+        betLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
         betLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         myHandLabel = new JLabel("My hand total: 0");
