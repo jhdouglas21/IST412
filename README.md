@@ -25,4 +25,4 @@ Main Code Refactoring Changes Made:
 
 #4 Nicholas Boyle - Pecentage of effort: 20%. Implementation of making sure that spending limit functions properly. Implemented changes that showed consistent bank balance across entire platform and updated funds when game is played. Fixed issues with blackjack hands being dealt automatically instead of waiting for user to start game. 
 
-#5 Sam Bender - Pecentage of effort: 20%. 
+#5 Sam Bender - Pecentage of effort: 20%. Helped primarily to prepare the use case implementation of gameview, game factories, and the games themselves. Implemented reusable and scallable code to build playable games upon that can easily be reused to change game for future implementation or carry over to this system test case to work between controllers.
